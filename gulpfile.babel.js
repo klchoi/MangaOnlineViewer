@@ -3,7 +3,6 @@ import gulp from 'gulp';
 import file from 'gulp-file';
 import beautify from 'gulp-jsbeautify';
 import preprocess from 'gulp-preprocess';
-import R from 'ramda';
 import { rollup } from 'rollup';
 import babel from 'rollup-plugin-babel';
 import cleanup from 'rollup-plugin-cleanup';
@@ -34,7 +33,7 @@ const scripts = {
 function buildUserscript(entryFile, destFile, metaFile) {
   return rollup({
     input: entryFile,
-    external: R.keys(pkg.dependencies),
+    external: Object.keys(pkg.dependencies),
     plugins: [
       commonjs(),
       html({

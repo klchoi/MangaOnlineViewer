@@ -1,7 +1,7 @@
 // Check if the value is empty
-const isEmpty = R.either(R.isNil, R.isEmpty);
+const isEmpty = (value) => ['null', 'undefined', '[]', '{}', '""'].includes(JSON.stringify(value));
 
-const mapIndexed = R.addIndex(R.map);
+const mapIndexed = (callback) => (list) => list.map(callback);
 
 export {
   isEmpty,

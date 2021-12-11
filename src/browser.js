@@ -7,8 +7,8 @@ function logScript(...text) {
   return text;
 }
 
-// Composeble console output
-const logScriptC = R.curry((x, y) => logScript(x, y)[1]);
+// Composable console output
+const logScriptC = (x) => (y) => logScript(x, y)[1];
 
 // Clear the Console
 function logClear(...text) {

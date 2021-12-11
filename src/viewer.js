@@ -166,9 +166,10 @@ function start(sites) {
   }
 
   logScript('Looking for a match...');
-  const test = R.compose(R.map(waitExec),
-    R.map(logScriptC('Site Found:')),
-    R.filter((x) => R.test(x.url, W.location.href)));
+  const test = (ss) => ss
+    .filter((x) => x.url.test(W.location.href))
+    .map(logScriptC('Site Found:'))
+    .map(waitExec);
   test(sites);
 }
 

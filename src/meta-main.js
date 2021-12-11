@@ -1,4 +1,3 @@
-import R from 'ramda';
 import pkg from '../package.json';
 import sites from './main';
 import { requiredScripts } from './externals';
@@ -9,8 +8,7 @@ export default {
   updateURL: 'https://github.com/TagoDR/MangaOnlineViewer/raw/master/Manga_OnlineViewer.meta.js',
   downloadURL: 'https://github.com/TagoDR/MangaOnlineViewer/raw/master/Manga_OnlineViewer.user.js',
   namespace: 'https://github.com/TagoDR',
-  description: `Shows all pages at once in online view for these sites: ${R.pluck('name', sites)
-    .join(', ').replace('Test, ', '')}`,
+  description: `Shows all pages at once in online view for these sites: ${sites.map((s) => s.name).join(', ').replace('Test, ', '')}`,
   version: pkg.version,
   license: pkg.license,
   date: new Date().toISOString().slice(0, 10),
@@ -23,7 +21,7 @@ export default {
   ],
   connect: '*',
   require: requiredScripts,
-  include: R.pluck('url', sites),
+  include: sites.map((s) => s.url),
   exclude: [
     /https?:\/\/(www.)?tsumino.com\/.+/,
     /https?:\/\/(www.)?pururin.io\/.+/,

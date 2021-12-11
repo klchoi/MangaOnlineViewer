@@ -217,9 +217,9 @@ function loadManga(manga, begin = 1) {
     manga.bruteForce({
       begin,
       addImg,
-      addPage: R.curry(addPage)(manga),
-      loadMangaImages: R.curry(loadMangaImages)(begin - 1),
-      loadMangaPages: R.curry(loadMangaPages)(begin - 1),
+      addPage: (...args) => addPage(manga, ...args),
+      loadMangaImages: (...args) => loadMangaImages(begin - 1, ...args),
+      loadMangaPages: (...args) => loadMangaPages(begin - 1, ...args),
       getHtml,
       wait: settings.timer,
     });
