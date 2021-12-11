@@ -1,4 +1,3 @@
-import moment from 'moment';
 import R from 'ramda';
 import pkg from '../package.json';
 import sites from './adult';
@@ -14,8 +13,7 @@ export default {
     .join(', ')}`,
   version: pkg.version,
   license: pkg.license,
-  date: moment()
-    .format('YYYY-MM-DD'),
+  date: new Date().toISOString().slice(0, 10),
   grant: [
     'GM_getValue',
     'GM_setValue',
